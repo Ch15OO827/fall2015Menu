@@ -49,51 +49,9 @@ session_start();
                     </dl>
                 </div>
             </div>
-      <div class="row">
-        <div class="col-md-8 col-xs-10">
-            <a href="edit.php" class="btn btn-success">
-                <i class="glyphicon glyphicon-plus"></i>
-                New Record
-            </a>
-            
-            <br />
-            <table class="table table-condensed table-striped table-bordered table-hover">
-              <thead>
-                <tr>
-                  <th>View/Edit/Delete</th>
-                  <th>Name</th>
-                  <th>Time</th>
-                  <th>Calories</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php foreach($workO as $i => $session): ?>
-                <tr>
-                  <th scope="row">
-                    <div class="btn-group" role="group" aria-label="...">
-                      <a href="view.php?id=<?=$i?>" title="View" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>
-                      <a href="edit.php?id=<?=$i?>" title="Edit" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
-                      <a href="delete.php?id=<?=$i?>" title="Delete" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
-                    </div>
-                  </th>
-                  <td><?=$session['Name']?></td>
-                  <td><?=date("M d Y  h:i:sa", $session['Time'])?></td>
-                  <td><?=$session['Calories']?></td>
-                </tr>
-                <?php endforeach; ?>
-              </tbody>
-            </table>  
-          
-        </div>
-        
-
-        </div>
-      </div>
-      
-            
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </body>
 </html>
