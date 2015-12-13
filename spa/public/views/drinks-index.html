@@ -36,11 +36,14 @@
                         <td ng-if-start="row.isEditing">
                             <input type="text" name="Name" class="form-control" placeholder="Name" ng-model="row.Name" />
                         </td>
-                        <td><input type="text" name="Date" class="form-control" placeholder="Calories" ng-model="row.Date" /></td>
-                        <td><input type="text" name="Calories" class="form-control" placeholder="Fat" ng-model="row.Calories" /></td>
                         <td>
                             <select ng-options="option.id as option.Name for option in vm.persons" ng-model="row.UserId" class="form-control"></select>
                          </td>
+                        <td>
+                            <select ng-options="option.id as option.Name for option in vm.keywords" ng-model="row.TypeId" class="form-control"></select>
+                         </td>
+                        <td><input type="text" name="Date" class="form-control" placeholder="Date" ng-model="row.Date" /></td>
+                        <td><input type="text" name="Calories" class="form-control" placeholder="Calories" ng-model="row.Calories" /></td>
                         <td ng-if-end>
                             <input type="button" value="Save" class="btn btn-primary btn-sm submit" ng-click="vm.save(row, $index)"/>
                             <input type="button" value="Cancel" class="btn btn-default btn-sm submit" ng-click="row.isEditing = false"/>

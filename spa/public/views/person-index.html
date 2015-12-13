@@ -20,7 +20,9 @@
             </thead>
             <tbody>
                     <tr ng-repeat="row in vm.rows">
-                        <td ng-if-start="!row.isEditing">{{row.Name}}</td>
+                        <td ng-if-start="!row.isEditing">
+                            <img src="https://graph.facebook.com/{{row.fbid}}/picture" style="width:24px" />
+                            {{row.Name}}</td>
                         <td >{{row.Birthday}}</td>
                         <td >{{row.TypeName}}</td>
                         <td >{{row.Weight}}</td>

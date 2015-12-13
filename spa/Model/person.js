@@ -2,11 +2,19 @@ var mysql = require("mysql");
 
 module.exports =  {
     blank: function(){ return {} },
-    get: function(id, ret){
+    get: function(id, ret, searchType){
         var conn = GetConnection();
-        var sql = 'SELECT * FROM 2015Fall_Persons ';
+        var sql = 'SELECT P.*, K.Name as TypeName FROM 2015Fall_Persons P Join 2015Fall_Keywords K ON P.TypeId = K.id ';
         if(id){
-          sql += " WHERE id = " + id;
+         switch (searchType) {
+            case 'facebook':
+              sql += " WHERE P.fbid = " + id;
+              break;
+            
+            default:
+              sql += " WHERE P.id = " + id;
+          }
+          
         }
         conn.query(sql, function(err,rows){
           ret(err,rows);
@@ -30,8 +38,8 @@ module.exports =  {
 						  + " WHERE id = ? ";
 			  }else{
 				  sql = "INSERT INTO 2015Fall_Persons "
-						  + " (Name, Birthday, created_at) "
-						  + "VALUES (?, ?, Now() ) ";				
+						  + " (Name, Birthday, created_at, TypeId, fbid) "
+						  + "VALUES (?, ?, Now(), ?, ? ) ";				
 			  }
 
         conn.query(sql, [row.Name, row.Birthday, row.id],function(err,data){

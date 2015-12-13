@@ -41,4 +41,24 @@
                 });
             }
             
-        });
+        })
+        .controller('drinksNew', function($http, alert, panel){
+            var self = this;
+            
+            self.row = {};
+            self.term = null;
+            self.choices = [];
+            
+            self.search = function(){
+                $http.get("/drinks/search/" + self.term)
+                .success(function(data){
+                    self.choices = data.hits;
+                });
+            }
+            self.choose = function(choice){
+                self.row.Name = choice.fields.item_name;
+                self.row.Date = choice.fields.nf_date;
+                self.row.Calories = choice.fields.nf_calories;
+                self.choices = [];
+            }
+        })
